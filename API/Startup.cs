@@ -30,6 +30,7 @@ namespace API
             services.AddDbContext<StoreContext>(opt => {
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddCors(); 
         }
 
         // Middleware - This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +44,11 @@ namespace API
             }
 
             app.UseHttpsRedirection();
+            // UserCors must be at this location to allow the Origins get access to the data on the server
+            app.UseCors(opt => {
+                opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+            });
+           
 
             app.UseRouting();
 
