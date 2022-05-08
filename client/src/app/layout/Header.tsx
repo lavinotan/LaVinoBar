@@ -21,6 +21,7 @@ const midLinks = [
   { title: "catalog", path: "/catalog" },
   { title: "about", path: "/about" },
   { title: "contact", path: "/contact" },
+  { title: "errorTest", path: "/errorTest" },
 ];
 
 const rightLinks = [
@@ -70,6 +71,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
             </ListItem>
           ))}
         </List>
+
         <Box display="flex" alignItems="center">
           <IconButton size="large" sx={{ color: "inherit" }}>
             <Badge badgeContent={4} color="secondary">
