@@ -14,7 +14,7 @@ export const StoreContext = createContext<StoreContextValue | undefined>(
 export function useStoreContext() {
   const context = useContext(StoreContext);
 
-  if (context == undefined) {
+  if (context === undefined) {
     throw Error("Oops - we dot not seem to be in the provider");
   }
 
@@ -29,11 +29,11 @@ export function StoreProvider({ children }: PropsWithChildren<any>) {
     if (!basket) return;
 
     const items = [...basket.items]; // to copy items first
-    const itemIndex = items.findIndex((i) => i.productId == productId);
+    const itemIndex = items.findIndex((i) => i.productId === productId);
 
     if (itemIndex >= 0) {
       items[itemIndex].quantity -= quantity;
-      if (items[itemIndex].quantity == 0) items.splice(itemIndex, 1); // remove item if quantity is 0
+      if (items[itemIndex].quantity === 0) items.splice(itemIndex, 1); // remove item if quantity is 0
       setBasket((prevState) => {
         return { ...prevState!, items };
       });
